@@ -1,0 +1,88 @@
+﻿
+@{
+    ViewBag.Title = "Trang chủ";
+}
+
+<div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+        <br><br>
+        <h1 class="header center orange-text">---Test example past 1---</h1>
+
+        <br><br>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <form class="col s6">
+
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="databaseName" type="text" />
+                    <label for="databaseName">Database Name</label>
+                </div>
+                <div class="input-field col s6">
+                    <a class="waves-effect waves-light btn" id="createDatabase">Tạo mới</a>
+                </div>
+            </div>
+           
+        </form>
+    </div>
+    <div class="section">
+        <table>
+            <thead>
+                <tr>
+                    <th>DataId</th>
+                    <th>Tên cơ sở dữ liệu</th>
+                    <th>Ngày tạo</th>
+                    <th>Thao tác</th>
+                </tr>
+            </thead>
+          <tbody id="dataRender">
+              
+          </tbody>
+
+        </table>
+    </div>
+    <br><br>
+</div>
+<div id="createTableModel" class="modal">
+    <div class="modal-content">
+        <h4>Tạo bảng </h4>
+        <div class="row">
+            <div class="input-field col s12">
+                <input type="hidden" name="name" value="" id="dataHide" />
+                <input id="tableName" type="text" />
+                <label for="tableName">Tên bảng</label>
+            </div>
+        
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a class="waves-effect waves-light btn" id="btn-CreateTable">Tạo bảng</a>
+    </div>
+</div>
+
+<script id="html-template" type="x-tmpl-mustache">
+    <tr >
+      
+        <td>{{DatabaseId}}</td>
+        <td>{{DatabaseName}}</td>
+        <td>{{CreateDate}}</td>
+        <td>
+            <a class="red lighten-1 waves-effect btn-delete btn btn-small" data-id="{{DatabaseName}}" href="#">
+                <i class="material-icons">delete_forever</i>Xóa
+            </a> 
+            <a class="green accent-3 waves-effect createTable btn btn-small modal-trigger" data-id="{{DatabaseName}}" href="#createTableModel">
+                <i class="material-icons">add</i>Tạo bảng
+            </a>
+            <a href="#" data-toggle="tab" class="btn btn-small light-blue darken-2 waves-effect viewTable" data-id="{{DatabaseName}}">
+                <i class="material-icons">format_list_bulleted</i>Danh sách bảng
+            </a>
+        </td>
+    </tr>
+</script>
+
+@section scripts{
+    <script src="~/Assets/js/home.js"></script>
+}

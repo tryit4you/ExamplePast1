@@ -1,0 +1,90 @@
+﻿
+@{
+    ViewBag.Title = "filter";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container">
+    <div class="row">
+        <h3 class="text-center"> Tìm kiếm các bản ghi trong diện tích hình vuông</h3>
+        <form class="col s12">
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="lng" type="number" class="validate">
+                    <label for="lng">Kinh độ</label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="lat" type="number" class="validate">
+                    <label for="lat">Vĩ độ</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="bk" type="number" class="validate">
+                    <label for="bk">Bán kính</label>
+                </div>
+
+            </div>
+            <a class="waves-effect waves-light btn" id="searchRecord">Tìm kiếm</a>
+        </form>
+    </div>
+    <div class="row">
+        <h3 class="text-center"> Tìm kiếm các bản ghi trong diện tích hình tròn</h3>
+        <form class="col s12">
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="lngCircle" type="number" class="validate">
+                    <label for="lngCircle">Kinh độ</label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="latCircle" type="number" class="validate">
+                    <label for="latCircle">Vĩ độ</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="bkCircle" type="number" class="validate">
+                    <label for="bkCircle">Bán kính hình tròn</label>
+                </div>
+
+            </div>
+            <a class="waves-effect waves-light btn" id="searchRecordCircle">Tìm kiếm</a>
+        </form>
+    </div>
+
+    <br><br>
+   
+        <div class="section">
+            <input type="hidden" id="tableName"  value="@ViewBag.tableName" />
+            <input type="hidden" id="dataName"  value="@ViewBag.dataName" />
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tên cây xanh</th>
+                        <th>Kinh độ</th>
+                        <th>Vĩ độ</th>
+                    </tr>
+
+                </thead>
+                <tbody id="dataRender"></tbody>
+
+
+            </table>
+        </div>
+        
+
+        <br><br>
+    </div>
+
+<script id="html-template" type="x-tmpl-mustache">
+    <tr>
+
+        <td>{{TenCayXanh}}</td>
+        <td>{{Lat}}</td>
+        <td>{{Lng}}</td>
+    </tr>
+</script>
+@section scripts{
+    <script src="/assets/js/filter.js"></script>
+}

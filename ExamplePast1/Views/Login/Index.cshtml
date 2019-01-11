@@ -1,0 +1,54 @@
+﻿@model ExamplePast1.ViewModels.LoginViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_SimpleLayout.cshtml";
+}
+<div class="row login-form">
+    <div class="col s12 m4">
+        <div class="card  login-block">
+            <h4 class="text-center">Đăng nhập</h4>
+            
+            @if (ViewBag.error != null)
+            {
+                <i class="red">@ViewBag.error</i>
+            }
+                <div class="card-content white-text ">
+                    @Html.BeginForm("Login", "Login", FormMethod.Post){
+   
+                    <div class="input-field col s12">
+                        @Html.TextBoxFor(x => x.ServerName, new { @id = "servername" })
+                        <label for="servername">Tên server</label>
+                        @Html.ValidationMessageFor(x => x.ServerName, "", new { @class = "text-danger" });
+                    </div>
+                    <div class="input-field col s12">
+                        @Html.TextBoxFor(x => x.UserId, new { @id = "userid" })
+                        <label for="userid">Tên đăng nhập</label>
+                        @Html.ValidationMessageFor(x => x.UserId, "", new { @class = "text-danger" });
+
+                    </div>
+                    <div class="input-field col s12">
+                        @Html.PasswordFor(x => x.Password, new { @id = "password" })
+                        <label for="password">Mật khẩu</label>
+                        @Html.ValidationMessageFor(x => x.Password, "", new { @class = "text-danger" });
+
+                    </div>
+                    <div class="row">
+                        <div class="row">
+
+                            <div class=" col s12">
+                                <button class="waves-effect waves-light btn-small" type="submit">Đăng nhập</button>
+                            </div>
+                        </div>
+                    </div>
+                    }
+
+
+                </div>
+        </div>
+    </div>
+    <div class="login-form">
+
+
+
+    </div>
+</div>

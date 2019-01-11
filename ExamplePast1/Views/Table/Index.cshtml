@@ -1,0 +1,61 @@
+﻿@{
+    ViewBag.Title = "Xem danh sách bảng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+<style>
+    .hidden{
+         display:none;
+     }
+</style>
+
+<div class="container" style="min-height:400px">
+    <div class="section">
+        <input type="hidden" id="databaseName" value="@ViewBag.dataName" />
+        <table>
+            <thead>
+                <tr>
+                    <th>Tên Database</th>
+                    <th>Tên bảng</th>
+                    <th>Thao tác</th>
+                </tr>
+            </thead>
+            <tbody id="dataRender"></tbody>
+        </table>
+    </div>
+    <br><br>
+        <div class="import-area hidden">
+            <form action="#">
+                <input type="hidden" id="tableName" value="" />
+                <input type="hidden" id="dataName" value="" />
+                <div class="file-field input-field">
+                    <input type="text" placeholder="Nhập đường dẫn..." name="name" value="" id="fileImport" />
+                    <label for="fileImport">Nhập đường dẫn</label>
+                </div>
+                <a class="waves-effect waves-light btn modal-trigger importData">Nạp dữ liệu</a>
+
+            </form>
+        </div>    
+</div>
+<script id="html-template" type="x-tmpl-mustache">
+    <tr>
+       
+        <td>{{DatabaseName}}</td>
+        <td>{{TableName}}</td>
+        <td>
+            <a class="red lighten-1 waves-effect btn-delete btn btn-small" data-id="{{TableName}}" href="#">
+                <i class="material-icons">delete_forever</i>Xóa
+            </a>
+            <a href="#" data-toggle="tab" class="btn btn-small light-blue darken-2 waves-effect showImport" data-id="{{TableName}}">
+                <i class="material-icons">import_export</i>Nạp dữ liệu
+            </a>
+            <a href="#" data-toggle="tab" class="btn btn-small blue darken-2 waves-effect filter" data-id="{{TableName}}">
+                <i class="material-icons">search</i>Tìm kiếm
+            </a>
+        </td>
+    </tr>
+</script>
+
+@section scripts{
+    <script src="~/Assets/js/table.js"></script>
+}
